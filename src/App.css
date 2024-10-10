@@ -1,38 +1,89 @@
-.App {
-  text-align: center;
+/* General Styles */
+.app {
+  display: flex;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  font-size: 25px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Sidebar Styles */
+.sidebar {
+  width: 350px;
+  background-color: #03203e;
+  color: rgb(238, 243, 245);
+  height: 100vh;
+  position: relative;
+  gap: 40px;
+  transition: transform 0.3s ease;
+  z-index: 999; /* Ensure it's above the content */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  overflow-y: auto;
 }
 
-.App-link {
-  color: #61dafb;
+.sidebar.closed {
+  width: 60px; /* Sidebar collapsed width */
+  transform: translateX(0); /* Keep it in view */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.sidebar.open {
+  width: 300px; /* Sidebar full width */
+  height: 100vh;
+
+}
+
+/* Adjust Icons Visibility in Collapsed Mode */
+
+.sidebar.closed ul li i {
+  margin-right: 10; /* Remove margin when closed */
+}
+
+.sidebar.closed ul li span {
+  display: flex; /* Hide text when sidebar is closed */
+}
+
+.sidebar.open ul li span {
+  display: inline-block;
+}
+
+/* Main Content */
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  margin-left: 250px; /* Full sidebar width */
+  transition: margin-left 0.3s ease;
+}
+
+.sidebar.closed ~ .main-content {
+  margin-left: 60px; /* Adjust content when sidebar is collapsed */
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 60px; /* Sidebar collapsed by default on mobile */
+    display: flex;
   }
-  to {
-    transform: rotate(360deg);
+
+  .main-content {
+    margin-left: 60px; /* No margin when sidebar is collapsed */
+    display: flex;
+  }
+
+  .sidebar.open ~ .main-content {
+    margin-left: 250px; /* Adjust content when sidebar is open */
+    display: flex;
+  }
+
+  /* Adjust icon and text sizes for mobile */
+  .sidebar ul li i {
+    font-size: 16px; /* Smaller icons */
+  }
+
+  .sidebar ul li span {
+    font-size: 14px; /* Smaller text */
   }
 }

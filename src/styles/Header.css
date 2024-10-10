@@ -1,0 +1,19 @@
+.header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 50px; /* Adjust as per your design */
+    padding-right: 20px; /* Space from the right */
+
+}
+
+.header-icons i {
+    font-size: 1.7rem; /* Icon size */
+    margin-left: 20px; /* Space between icons */
+    cursor: pointer;
+    color: #333; /* Icon color */
+}
+
+.header-icons i:hover {
+    color: #387dc8; /* Color change on hover */
+}
