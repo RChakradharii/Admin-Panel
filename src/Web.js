@@ -6,9 +6,9 @@ import AddBooking from './components/AddBooking';
 import AllRooms from './components/AllRooms';
 import Customers from './components/Customers';
 import Settings from './components/Settings';
-import Header from './components/Header';
+import Header from './components/Admin-header';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import './App.css';
+import './Web.css';
 
 function App() {
   const [activePage, setActivePage] = useState('dashboard');
