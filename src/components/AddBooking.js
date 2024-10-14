@@ -9,6 +9,7 @@ const AddBooking = ({ onAddCustomer }) => {
     const [roomType, setRoomType] = useState('ordinary');
     const [status, setStatus] = useState('active');
     const [idImage, setIdImage] = useState(null);
+    const [location, setLocation] = useState('Dantewada'); // Location state added
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -24,6 +25,7 @@ const AddBooking = ({ onAddCustomer }) => {
             status: status,
             idImage: idImage ? idImage.name : null, // Use file name if image uploaded
             lastCheckout: checkOutDate, // Assume checkout date is set when adding a booking
+            location: location, // Include location in the new customer object
         };
 
         // Pass the new customer data to the parent component
@@ -37,6 +39,7 @@ const AddBooking = ({ onAddCustomer }) => {
         setRoomType('ordinary');
         setStatus('active');
         setIdImage(null);
+        setLocation('Dantewada'); // Reset location to default
     };
 
     return (
@@ -45,6 +48,7 @@ const AddBooking = ({ onAddCustomer }) => {
             <form onSubmit={handleSubmit}>
                 <table>
                     <tbody>
+                        {/* Existing fields */}
                         <tr>
                             <td>
                                 <label htmlFor="customerName">Customer Name:</label>
@@ -101,6 +105,7 @@ const AddBooking = ({ onAddCustomer }) => {
                                 />
                             </td>
                         </tr>
+                        {/* Room Type */}
                         <tr>
                             <td>
                                 <label htmlFor="roomType">Room Type:</label>
@@ -117,6 +122,7 @@ const AddBooking = ({ onAddCustomer }) => {
                                 </select>
                             </td>
                         </tr>
+                        {/* Status */}
                         <tr>
                             <td>
                                 <label htmlFor="status">Status:</label>
@@ -133,6 +139,7 @@ const AddBooking = ({ onAddCustomer }) => {
                                 </select>
                             </td>
                         </tr>
+                        {/* ID Image */}
                         <tr>
                             <td>
                                 <label htmlFor="idImage">ID Image:</label>
@@ -144,6 +151,24 @@ const AddBooking = ({ onAddCustomer }) => {
                                     accept="image/*"
                                     onChange={(e) => setIdImage(e.target.files[0])}
                                 />
+                            </td>
+                        </tr>
+                        {/* Location Dropdown */}
+                        <tr>
+                            <td>
+                                <label htmlFor="location">Location:</label>
+                            </td>
+                            <td>
+                                <select
+                                    id="location"
+                                    value={location}
+                                    onChange={(e) => setLocation(e.target.value)}
+                                    required
+                                >
+                                    <option value="Dantewada">Dantewada</option>
+                                    <option value="Barsur">Barsur</option>
+                                    <option value="Geedam">Geedam</option>
+                                </select>
                             </td>
                         </tr>
                     </tbody>

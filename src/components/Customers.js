@@ -4,7 +4,7 @@ import '../styles/Customers.css';
 const CustomerTable = ({ customers, onCustomerUpdate }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [editCustomerId, setEditCustomerId] = useState(null);
-    const [editedCustomer, setEditedCustomer] = useState({ name: '', phone: '', email: '', checkInDate: '', roomType: 'Ordinary', status: 'Active', idImage: null });
+    const [editedCustomer, setEditedCustomer] = useState({ name: '', phone: '', email: '', checkInDate: '', roomType: 'Ordinary', status: 'Active', idImage: null, location: '' });
     const [activeDropdown, setActiveDropdown] = useState(null);  // For handling the dropdown state
 
     useEffect(() => {
@@ -39,10 +39,12 @@ const CustomerTable = ({ customers, onCustomerUpdate }) => {
         setActiveDropdown(activeDropdown === id ? null : id); // Toggle dropdown on click
     };
 
+    // Filter customers by name, phone, email, or location
     const filteredCustomers = customers.filter(customer =>
         customer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         customer.phone.includes(searchTerm) ||
-        (customer.email && customer.email.toLowerCase().includes(searchTerm)) // Check if email exists before filtering
+        (customer.email && customer.email.toLowerCase().includes(searchTerm)) || // Check if email exists before filtering
+        (customer.location && customer.location.toLowerCase().includes(searchTerm)) // Check location for filtering
     );
 
     return (
@@ -67,6 +69,7 @@ const CustomerTable = ({ customers, onCustomerUpdate }) => {
                         <th>Status</th>
                         <th>ID Image</th>
                         <th>Last Checkout Date</th>
+                        <th>Location</th> {/* New Location column */}
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -137,6 +140,17 @@ const CustomerTable = ({ customers, onCustomerUpdate }) => {
                             </td>
                             <td>{customer.idImage ? 'Uploaded' : 'No Image'}</td>
                             <td>{customer.lastCheckout}</td>
+                            <td>
+                                {editCustomerId === customer.id ? (
+                                    <input
+                                        value={editedCustomer.location}
+                                        onChange={(e) => setEditedCustomer({ ...editedCustomer, location: e.target.value })}
+                                        className="edit-input"
+                                    />
+                                ) : (
+                                    customer.location
+                                )}
+                            </td> {/* Editable Location */}
                             <td className="action-menu">
                                 <button className="three-dot-menu" onClick={() => toggleDropdown(customer.id)}>
                                     &#x2022;&#x2022;&#x2022;

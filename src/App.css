@@ -62,28 +62,4 @@ h1 {
 }
 
 /* Responsive Styles */
-@media screen and (max-width: 768px) {
-  .sidebar {
-    width: 60px; /* Sidebar collapsed by default on mobile */
-    display: flex;
-  }
 
-  .main-content {
-    margin-left: 60px; /* No margin when sidebar is collapsed */
-    display: flex;
-  }
-
-  .sidebar.open ~ .main-content {
-    margin-left: 250px; /* Adjust content when sidebar is open */
-    display: flex;
-  }
-
-  /* Adjust icon and text sizes for mobile */
-  .sidebar ul li i {
-    font-size: 16px; /* Smaller icons */
-  }
-
-  .sidebar ul li span {
-    font-size: 14px; /* Smaller text */
-  }
-}

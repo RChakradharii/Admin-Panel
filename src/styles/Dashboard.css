@@ -56,53 +56,29 @@
         align-items: flex-start;
     }
 
-    .header h2 {
+    .dash-head {
         font-size: 20px;
-        margin: 10px 0;
-    }
-
-    .notification-icon,
-    .admin-icon {
-        font-size: 20px;
+        left: 10%; /* Reset position for smaller screens */
+        margin-top: 15px;
     }
 
     .stats {
         flex-direction: column;
         align-items: center;
-        gap: 15px; /* Gap reduced to fix unnecessary space */
-        margin-bottom: 0; /* Extra bottom margin removed */
+        gap: 20px; /* Adjust gap for better spacing */
+        margin-bottom: 30px; /* Remove extra bottom margin */
     }
 
     .card {
-        flex: 1 1 100%;
-        margin: 10px 0;
+        height: 90px;
+        padding: 40px;
+        max-width: 60%; /* Make cards full-width on smaller screens */
+        margin: 10px 10px; /* Provide some space between cards */
+        right: 0; /* Reset position for smaller screens */
     }
 
-    h2 {
-        font-size: 20px;
+    .card h3{
+        margin-top: -10px;
     }
 }
 
-/* Extra Small Devices */
-@media screen and (max-width: 480px) {
-    .header h2 {
-        font-size: 18px;
-    }
-
-    .card p {
-        font-size: 16px;
-    }
-
-    .notification-icon,
-    .admin-icon {
-        font-size: 18px;
-    }
-
-    .stats {
-        margin-bottom: 0; /* Ensure no extra bottom margin */
-    }
-
-    .card {
-        margin-bottom: 10px; /* Prevent extra space below cards */
-    }
-}

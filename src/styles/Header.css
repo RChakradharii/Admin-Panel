@@ -17,3 +17,33 @@
 .header-icons i:hover {
     color: #387dc8; /* Color change on hover */
 }
+
+/* Responsive header for smaller devices */
+@media (max-width: 768px) {
+  
+    .header {
+      height: 50px; /* Adjusted height for smaller screens */
+      padding-right: 10px; /* Reduced padding on the right */
+      justify-content: space-between; /* Aligns items better on smaller screens */
+    }
+  
+    .header-icons i {
+      font-size: 1.4rem; /* Reduced icon size for mobile devices */
+      margin-left: 10px; /* Reduced space between icons */
+    }
+  }
+  
+  /* Even smaller devices (like mobile phones) */
+  @media (max-width: 480px) {
+  
+    .header {
+      height: 5px; /* Even smaller height */
+      padding-left: 150px; /* Minimal padding */
+    }
+  
+    .header-icons i {
+      font-size: 1.2rem; /* Further reduced icon size */
+      margin-left: 6px; /* Less margin between icons */
+    }
+  }
+  

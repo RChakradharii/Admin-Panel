@@ -15,7 +15,7 @@
   font-size: 25px;
   cursor: pointer;
   padding: 15px;
-  justify-content: start; /* Aligns hamburger to the left */
+  justify-content: flex-start; /* Aligns hamburger to the left */
 }
 
 
@@ -47,7 +47,7 @@
 }
 
 .sidebar ul li i {
-  margin-right: 15px;
+  margin-right: 25px;
   font-size: 18px;
   
 }
@@ -103,21 +103,53 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
-  .sidebar {
-      width: 60px;
-      height: calc(100vh - 60px);
-  }
 
-  .sidebar.open {
-      width: 250px;
-  }
+/* For tablets and smaller devices */
+@media (max-width: 1024px) {
+ 
 
-  .main-content {
-      margin-left: 60px;
-  }
-
+  /* Adjust main-content margin when sidebar is opened */
   .main-content.sidebar-open {
-      margin-left: 250px;
+      margin-left: 100px; /* When sidebar is opened */
+  }
+
+  /* Adjust the hamburger icon and title for smaller screens */
+  .hamburger {
+      padding: 20px;
+      font-size: 30px;
+  }
+
+  .hamburger .sidebar-title {
+      font-size: 18px;
+  }
+
+  /* Sidebar text */
+  .sidebar ul li span {
+      white-space: nowrap; /* Ensures the text does not break into new lines */
+      visibility: visible; /* Ensures text visibility */
+      opacity: 1; /* Fully visible when sidebar is open */
+      transition: opacity 0.3s ease; /* Smooth transition */
+  }
+
+  .sidebar.closed ul li span {
+      visibility: hidden; /* Completely hides the text when sidebar is closed */
+      opacity: 0; /* Fades out the text when sidebar is closed */
+  }
+
+  /* Make dropdown menus more responsive */
+  .sidebar ul ul li {
+      left: -80%; /* Adjust left position for mobile */
+      margin-top: 30px;
+  }
+
+  /* Chevron arrow and icon adjustments */
+  .sidebar ul li i {
+      margin-right: 10px; /* Decrease space */
+  }
+
+  /* Adjust the font size of dropdown arrows for small screens */
+  .sidebar ul li i.fa-chevron-right,
+  .sidebar ul li i.fa-chevron-down {
+      font-size: 14px;
   }
 }
