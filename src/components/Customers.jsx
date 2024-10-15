@@ -4,7 +4,16 @@ import '../styles/Customers.css';
 const CustomerTable = ({ customers, onCustomerUpdate }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [editCustomerId, setEditCustomerId] = useState(null);
-    const [editedCustomer, setEditedCustomer] = useState({ name: '', phone: '', email: '', checkInDate: '', roomType: 'Ordinary', status: 'Active', idImage: null, location: '' });
+    const [editedCustomer, setEditedCustomer] = useState({
+        name: '',
+        phone: '',
+        email: '',
+        checkInDate: '',
+        roomType: 'Ordinary',
+        status: 'Active',
+        idImage: null,
+        location: ''
+    });
     const [activeDropdown, setActiveDropdown] = useState(null);
 
     useEffect(() => {
@@ -73,7 +82,7 @@ const CustomerTable = ({ customers, onCustomerUpdate }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {filteredCustomers.map(customer => (
+                    {filteredCustomers.length > 0 ? filteredCustomers.map(customer => (
                         <tr key={customer.id}>
                             <td>
                                 {editCustomerId === customer.id ? (
@@ -166,7 +175,11 @@ const CustomerTable = ({ customers, onCustomerUpdate }) => {
                                 )}
                             </td>
                         </tr>
-                    ))}
+                    )) : (
+                        <tr>
+                            <td colSpan="9">No customers found</td>
+                        </tr>
+                    )}
                 </tbody>
             </table>
         </div>

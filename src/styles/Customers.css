@@ -4,22 +4,19 @@
 
 .customer-title {
     color: rgb(1, 1, 18);
-    position: relative;
-    right: 20%;
-    margin-top: 5px;
+    margin: 20px 0;
     font-size: 25px;
-    margin-bottom: 20px;
+    text-align: center;
 }
 
 .customer-search-container {
     margin-bottom: 15px;
-    position: relative;
-    right: 20%;
+    text-align: center;
 }
 
 .customer-search-input {
-    width: 100%;
-    max-width: 100%;
+    width: 80%;
+    max-width: 600px;
     padding: 10px;
     box-sizing: border-box;
 }
@@ -27,6 +24,7 @@
 .customer-data-table {
     width: 100%;
     border-collapse: collapse;
+    margin: 0 auto;
 }
 
 .customer-data-table th,
@@ -36,12 +34,16 @@
     border-bottom: 1px solid #fbfdff;
 }
 
+.customer-data-table th {
+    background-color: rgb(37, 34, 80);
+    color: white;
+}
+
 input[type="text"],
 input[type="email"] {
     width: 100%;
     box-sizing: border-box;
-    padding: 18px;
-    margin: 10px 0;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
@@ -51,10 +53,6 @@ td {
     padding: 12px;
     text-align: left;
     border: 1px solid #ddd;
-}
-
-thead {
-    color: rgb(250, 248, 248);
 }
 
 button {
@@ -84,9 +82,10 @@ button:hover {
     position: absolute;
     top: -15px;
     left: 45px;
-    border: none;
+    border: 1px solid #ddd;
+    background: white;
     z-index: 1;
-    padding: 15px;
+    padding: 10px;
 }
 
 .customer-action-dropdown button {
@@ -102,7 +101,7 @@ button:hover {
 
 /* Responsive Styles */
 @media (max-width: 600px) {
-    h2 {
+    .customer-title {
         font-size: 18px;
     }
 
@@ -114,7 +113,6 @@ button:hover {
     input[type="text"],
     input[type="email"] {
         font-size: 14px;
-        width: calc(100% - 16px);
     }
 
     button {
@@ -122,35 +120,22 @@ button:hover {
         font-size: 14px;
     }
 
-    .dropdown-menu {
-        width: 100%;
-    }
-
-    table {
-        font-size: 12px;
+    .customer-data-table {
         display: block;
         overflow-x: auto;
         white-space: nowrap;
     }
 
-    table thead,
-    table tbody,
-    table th,
-    table td {
+    .customer-data-table th,
+    .customer-data-table td {
         display: block;
-    }
-
-    th,
-    td {
         text-align: right;
-        padding: 10px;
     }
 
-    .customer-title {
-        font-size: 18px;
-    }
-
-    .customer-action-dropdown {
-        position: static;
+    .customer-data-table th::before {
+        content: attr(data-title);
+        float: left;
+        font-weight: bold;
+        text-align: left;
     }
 }

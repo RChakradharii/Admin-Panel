@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/AllBooking.css';
 
 const AllBooking = ({ customers }) => {
+    const [searchTerm, setSearchTerm] = useState('');
+
+    // Filter customers based on search term
+    const filteredCustomers = customers.filter(customer =>
+        customer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        customer.location.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <div className="booking-list">
             <h2 className="all-head">Booking List</h2>
+            {/* Search Bar */}
+            <input
+                type="text"
+                placeholder="Search by name or location"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="search-bar"
+            />
             <table className="booking-table">
                 <thead>
                     <tr>
@@ -18,7 +34,7 @@ const AllBooking = ({ customers }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {customers.map(customer => (
+                    {filteredCustomers.map(customer => (
                         <tr key={customer.id} className="table-row">
                             <td className="table-data">{customer.name}</td>
                             <td className="table-data">{customer.phone}</td>
